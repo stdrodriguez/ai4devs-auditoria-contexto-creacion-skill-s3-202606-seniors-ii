@@ -2,7 +2,7 @@
 
 - **Nombre / usuario:*Diego Rodriguez*
 - **Fecha de entrega:*29/Julio*
-- **Repo auditado en la Parte A** (solo tipo/contexto, NO el código): _p. ej. "Projecto databricks con dos años de evolución"_
+- **Repo auditado en la Parte A** (solo tipo/contexto, NO el código): "Projecto databricks con dos años de evolución"_
 
 ---
 
@@ -13,9 +13,9 @@
 
 1.	El sistema utiliza el schema config, como input en las etapas de validación referencial y estructural.
 2.  El sistema utiliza el schema control, para llevar registro de los logs de las ejecuciones de cada layer y resultados los datos ingestados.
-2.	El naming convetion utilizado en el código Python es Pascal Case.
-3.	El storage account es utilizado por el sistema para lectura por parte de la capa de bronze todos los contents a procesar. 
-4.	El storage account existente es utilizado como salida del proceso de Posting & Hardening
+3.	El naming convetion utilizado en el código Python es Pascal Case.
+4.	El storage account es utilizado por el sistema para lectura por parte de la capa de bronze todos los contents a procesar. 
+5.	El storage account existente es utilizado como salida del proceso de Posting & Hardening
 
 ## 2. SKILL.md de la skill creada (Parte B)
 
@@ -32,9 +32,9 @@ It receives a parameter with the catalog. schema name.
 1. When the skill starts, asks the user the list of validations files to test.
 2. Read the devops repository/branch url from the project.
 3. Requires de XLS file with the description of the every validation.
-3. Requeries the list of task url <TASK_URL>:
+4. Requeries the list of task url <TASK_URL>:
   - https://dev.azure.com/enterprise1/CORI/_workitems/edit/
-4. For each validation:
+5. For each validation:
     - Run 'git diff -- staged" to read the staged changes.
     - Check the description for the current validation, reading the sheet named "Validations" and the get the full rows description base on column A.
     - Analyize the diff and generate a description message between the previous version and the new version.
@@ -52,13 +52,15 @@ It receives a parameter with the catalog. schema name.
     
 # Rules
 - A1l validations will be stored in the "_Validations/00_Ingestion/020_Silver/Validations/" folder under the root folder.
-- All noteboooks will have two paremeters: catalog. schema and drop temporal data. The first one is the catalog. schema name where the validation will be executed. The second one is a boolean parameter to drop all the temporal
+- All noteboooks will have two paremeters: "catalog.schema" and "drop temporary data".
+  - "catalog.schema": define the catalog and schema name where all the temporary objects will be created to test the validation.
+  - "drop temporary data": It is a boolean parameter to drop all the temporary database objects and the schemema. This parameter has a default value set to False.
 ```
 
 ## 3. Diario de decisiones
 
-*Skill creada:* [generate-validation_test: genera las test sobre la validación cruzada de datos en base a reglas de negocio.]
-(https://github.com/stdrodriguez/ai4devs-auditoria-contexto-creacion-skill-s3-202606-seniors-ii/tree/main]
+*Skill creada:* [generate_validation_test: genera las test sobre la validación cruzada de datos en base a reglas de negocio.]
+(https://github.com/stdrodriguez/ai4devs-auditoria-contexto-creacion-skill-s3-202606-seniors-ii/tree/main)
 
 *Decisiones de diseño tomadas:*
 - Decisión 1: Analysis de la coherencia de las definiciones y codigo generado para la validación.
